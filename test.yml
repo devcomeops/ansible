@@ -1,0 +1,7 @@
+---
+- name: Test Ansible Lint
+  hosts: all
+  tasks:
+    - name: Test task
+      ansible.builtin.debug:
+        msg: "EX294 practice"

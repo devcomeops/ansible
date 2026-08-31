@@ -1,0 +1,16 @@
+[dev]
+servera	ansible_host=servera.example.com
+
+[test]
+serverb	ansible_host=serverb.example.com
+
+[prod]
+serverc	ansible_host=serverc.example.com
+serverd	ansible_host=serverd.example.com
+
+[balancers]
+servere	ansible_host=servere.example.com
+
+[webservers:children]
+prod
+

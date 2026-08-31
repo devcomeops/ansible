@@ -1,0 +1,11 @@
+{
+    "ansible.validation.lint.enabled": false,
+    "ansible.executionEnvironment.enabled": true,
+    "ansible.executionEnvironment.containerEngine": "podman",
+    "ansible.executionEnvironment.image": "registry.redhat.io/ansible-automation-platform-27/ee-supported-rhel9:latest",
+    "ansible.executionEnvironment.pull.arguments": [],
+    "ansible.executionEnvironment.pull.policy": "missing",
+    "terminal.integrated.env.linux": {
+        "XDG_DATA_HOME": "/home/kk/.local/share"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "ansible-dev-container-podman",
+    "image": "ghcr.io/ansible/community-ansible-dev-tools:latest",
+    "containerUser": "root",
+    "mounts": [
+        "source=/run/user/1000/podman/podman.sock,target=/var/run/docker.sock,type=bind",
+        "source=${localEnv:HOME}/.ssh/ansibele,target=/root/.ssh/ansibele,type=bind,readonly",
+        "source=${localEnv:HOME}/.ssh/known_hosts,target=/root/.ssh/known_hosts,type=bind,readonly"
+    ],
+    "remoteEnv": {
+        "DOCKER_HOST": "unix:///var/run/docker.sock",
+        "ANSIBLE_CONFIG": "/workspaces/AU294/ansible.cfg"
+    },
+    "workspaceFolder": "/workspaces/AU294",
+    "extraHosts": [
+        "servera.example.com:192.168.122.10",
+        "serverb.example.com:192.168.122.20",
+        "serverc.example.com:192.168.122.30",
+        "serverd.example.com:192.168.122.40",
+        "servere.example.com:192.168.122.50"
+    ]
+}
