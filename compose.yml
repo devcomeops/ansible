@@ -1,0 +1,16 @@
+services:
+  au294:
+    image: registry.redhat.io/ansible-automation-platform-25/ee-supported-rhel8:latest
+    container_name: au294-rhel8
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    working_dir: /workspaces/AU294
+    volumes:
+      - .:/workspaces/AU294:Z
+    extra_hosts:
+      - "servera.example.com:192.168.122.10"
+      - "serverb.example.com:192.168.122.20"
+      - "serverc.example.com:192.168.122.30"
+      - "serverd.example.com:192.168.122.40"
+      - "servere.example.com:192.168.122.50"

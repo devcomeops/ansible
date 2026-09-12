@@ -1,16 +1,23 @@
 [dev]
-servera	ansible_host=servera.example.com
+servera ansible_host=192.168.122.10
 
 [test]
-serverb	ansible_host=serverb.example.com
+serverb ansible_host=192.168.122.20
 
 [prod]
-serverc	ansible_host=serverc.example.com
-serverd	ansible_host=serverd.example.com
+serverc ansible_host=192.168.122.30
+serverd ansible_host=192.168.122.40
 
 [balancers]
-servere	ansible_host=servere.example.com
+serverd
 
-[webservers:children]
-prod
+[webservers]
+serverb
+serverc
 
+[all:vars]
+ansible_user=ansible
+ansible_password=a
+ansible_become=true
+ansible_become_method=sudo
+ansible_become_password=a

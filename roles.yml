@@ -1,0 +1,12 @@
+---
+- name: Configure load balancer
+  hosts: balancers
+  become: true
+  roles:
+    - balancer
+
+- name: Configure PHP web servers
+  hosts: webservers
+  become: true
+  roles:
+    - phpinfo

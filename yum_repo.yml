@@ -1,0 +1,21 @@
+- name: Configure YUm repo
+  hosts: all
+  become: true
+  tasks:
+    - name: Configure yum repo
+      ansible.builtin.yum_repository: 
+        name: EX294_BASE
+        description: EX294 base software
+        baseurl: abc
+        gpgcheck: true
+        enabled: true
+        gpgkey: url
+
+    - name: Configure yum repo
+      ansible.builtin.yum_repository: 
+        name: EX294_STREAM
+        description: EX294 stream software
+        baseurl: abc
+        gpgcheck: true
+        enabled: true
+        gpgkey: url        

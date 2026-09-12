@@ -1,0 +1,19 @@
+ -  name: Modify the /etc/issue file content
+    hosts: all
+    become: true
+    tasks: 
+      - name: Copy using inline content
+        ansible.builtin.copy:
+          content: "Development" 
+          dest: /etc/issue
+        when: inventory_hostname in groups.dev  
+      - name: Copy using inline content
+        ansible.builtin.copy:
+          content: "Test" 
+          dest: /etc/issue
+        when: inventory_hostname in groups.test  
+      - name: Copy using inline content
+        ansible.builtin.copy:
+          content: "Production" 
+          dest: /etc/issue
+        when: inventory_hostname in groups.prod              

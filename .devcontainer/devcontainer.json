@@ -1,0 +1,16 @@
+{
+    "name": "AU294-RHEL8-AAP25",
+    "image": "registry.redhat.io/ansible-automation-platform-25/ee-supported-rhel8:latest",
+    "workspaceFolder": "/workspaces/AU294",
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspaces/AU294,type=bind"
+    ],
+    "containerEnv": {
+        "ANSIBLE_CONFIG": "/workspaces/AU294/ansible.cfg"
+    },
+    "runArgs": [
+        "--network=host"
+    ],
+    "remoteUser": "root",
+    "postCreateCommand": "python3 -m pip install --no-cache-dir ansible-navigator==26.6.0"
+}

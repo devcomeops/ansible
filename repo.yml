@@ -1,0 +1,21 @@
+- name: Configure dnf repository
+  hosts: all
+  become: true
+  tasks:
+    - name: Create Dnf repository
+      ansible.builtin.yum_repository:
+        name: EX24_BASE
+        baseurl: http://thois.domain7.example.com/BaseoS
+        description: EX254 base software
+        enabled: yes
+        gpgcakey: http://rhois.domain7.example.com/RHEL/RPM-GPG-KEY-redhat-release
+        gpgcheck: yes        
+    - name: Create Dnf repository
+      ansible.builtin.yum_repository:
+        name: EX294_STREAK
+        baseurl: http://thois.domain7.example.com/AppStream
+        description: EX254 base software
+        enabled: yes
+        gpgcakey: http://rhois.domain7.example.com/RHEL/RPM-GPG-KEY-redhat-release
+        gpgcheck: yes        
+        

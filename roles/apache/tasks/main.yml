@@ -1,0 +1,24 @@
+- name: Install Roles using ansible galaxy
+  ansible.builtin.dnf:
+    name: httpd
+    state: present
+- name: enable httpd
+  ansible.builtin.service:
+    name: httpd
+    state: started
+    enabled: yes
+- name: firewall start
+  ansible.builtin.service:
+    name: firewalld
+    state: started
+    enabled: yes        
+- name: allow http from firewalld
+  ansible.posix.firewalld:
+    service: http
+    permanent: yes
+    immediate: yes
+    state: enabled
+- name: deploy j2 template
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: /var/www/html/index.html     
