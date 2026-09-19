@@ -1,0 +1,10 @@
+- name: create cron job
+  hosts: all
+  become: true
+  tasks: 
+    - name: Ensure a job that runs at 2 mins
+      ansible.builtin.cron:
+        name: "cron-job1"
+        minute: "*/2"
+        user: ansible
+        job: 'logger "EX200 in progress"'
