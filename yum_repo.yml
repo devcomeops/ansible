@@ -1,0 +1,20 @@
+ - name: Configure yum repo
+   hosts: all
+   become: true
+   tasks:
+     - name: Configure yum repo  EX24_BASE
+       ansible.builtin.yum_repository:
+         name: EX24_BASE
+         description: EX254 base software
+         baseurl: http://thois.domain7.example.com/BaseoS
+         gpgcheck: true
+         gpgkey: url
+         enabled: true
+     - name: Configure yum repo  EX24_BASE
+       ansible.builtin.yum_repository:
+         name: EX24_BASE
+         description: EX254 base software
+         baseurl: http://thois.domain7.example.com/BaseoS
+         gpgcheck: true
+         gpgkey: url
+         enabled: true
