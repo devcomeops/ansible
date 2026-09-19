@@ -1,0 +1,8 @@
+ - name: set selinux policy to enforcing
+   hosts: all
+   become: true
+   vars:
+     selinux_policy: targeted
+     selinux_state: enforcing
+   roles: 
+     - redhat.rhel_system_roles.selinux            
