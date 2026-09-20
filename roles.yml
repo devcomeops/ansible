@@ -1,0 +1,10 @@
+ - name: configure balancers
+   hosts: balancers
+   become: true
+   roles:
+     - balancer
+ - name: configure balancers
+   hosts: webservers
+   become: true
+   roles:
+    - phpinfo    

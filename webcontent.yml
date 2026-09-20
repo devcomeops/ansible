@@ -1,0 +1,46 @@
+ - name: Create a web content directory
+   hosts: dev
+   become: true
+   tasks:
+     - name: install httpd
+       ansible.builtin.dnf:
+         name: httpd
+         state: present
+     - name: Enable httpd and firewalld
+       ansible.builtin.service:
+         name: httpd
+         enabled: true
+         state: started
+     - name: Enable httpd and firewalld
+       ansible.builtin.service:
+         name: firewalld
+         enabled: true
+         state: started    
+     - name: allow httpd from firewalld
+       ansible.posix.firewalld:
+         service: http
+         permanent: true
+         immediate: true
+         state: enabled   
+     - name: Ensure group "somegroup" exists
+       ansible.builtin.group:
+         name: webdev1
+         state: present
+      
+     - name: Change file ownership, group and permissions
+       ansible.builtin.file:
+         path: /webdev1
+         group: webdev1
+         mode: '2775'
+         state: directory
+         setype: httpd_sys_content_t
+     - name: Create a symbolic link
+       ansible.builtin.file:
+         src: /webdev1
+         dest: /var/www/html/webdev1
+         state: link
+     - name: Create two hard links
+       ansible.builtin.file:
+         content: "Development for D" 
+         dest: /webdev1/index.html
+         setype: httpd_sys_content_t
