@@ -24,20 +24,20 @@
          state: enabled   
      - name: Ensure group "somegroup" exists
        ansible.builtin.group:
-         name: webdev1
+         name: webdev2
          state: present
       
      - name: Change file ownership, group and permissions
        ansible.builtin.file:
-         path: /webdev1
-         group: webdev1
+         path: /webdev2
+         group: webdev2
          mode: '2775'
          state: directory
          setype: httpd_sys_content_t
      - name: Create a symbolic link
        ansible.builtin.file:
-         src: /webdev1
-         dest: /var/www/html/webdev1
+         src: /webdev2
+         dest: /var/www/html/webdev2
          state: link
      - name: Create two hard links
        ansible.builtin.file:

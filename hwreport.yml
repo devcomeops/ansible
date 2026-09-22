@@ -1,0 +1,20 @@
+ - name: Create HW Report
+   hosts: all
+   become: true
+   tasks:
+     - name: Download hwreport template
+       ansible.builtin.get_url:
+         url: http://192.168.122.1:8000/hwreport.txt
+         dest: /root/hwreport.txt
+     - name: Generate HW Report
+       ansible.builtin.copy:
+         dest: /root/hwreport.txt
+         content: |
+           HOSTNAME={{ inventory_hostname }}
+           MEMORY={{ ansible_memtotal_mb }}
+           BIOS={{ ansible_bios_version }}
+           VDA={{ ansible_devices_vda.size if ansible.devices.vda is defined else 'None' }}
+           VDB={{ ansible_devices_vdb.size if ansible.devices.vdb is defined else 'None' }} 
+
+     
+       
